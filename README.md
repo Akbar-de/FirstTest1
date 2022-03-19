@@ -27,4 +27,4 @@ Note:
 
 The goal is to buy different electronic devices, select the delivery date and complete the checkout process.
 
-I build my website on lacalhost and run this code on my Eclipse IDE
+I build my website on lacalhost and run this code on my Eclipse IDE.
