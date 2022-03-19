@@ -1,4 +1,4 @@
-package adding;
+package Task1;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,38 +31,63 @@ public class sample {
 		//click on sumbit button
 		driver.findElement(By.id("wp-submit")).click();
 		
-		//--------1 ST-----------------------//
+		//--------Adding 1 ST-----------------------//
+		
+		//open woocommerce element
 		driver.findElement(By.xpath("//*[@id=\"toplevel_page_woocommerce\"]/a/div[3]")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);         
-
+		
+		//give some time for loading page
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+		
+		//Click on Add new product
 		driver.findElement(By.xpath("//*[@id=\"woocommerce-layout__primary\"]/div[2]/div/div[1]/div[2]/div/div[1]/ul/li[2]/div[2]")).click();
+		
+		//Click on add manually
 		driver.findElement(By.xpath("//*[@id=\"woocommerce-layout__primary\"]/div[2]/div/div/div/div[1]/div/ul/li[2]/a/div[2]")).click();
+		
+		//Find Tittle bar and Give Product name
 		WebElement camera = driver.findElement(By.xpath("//*[@id=\"title\"]"));
 		camera.click();
 		camera.sendKeys("Canon Camera");
+		
+		//Go to Regular price and Give value
 		driver.findElement(By.xpath("//*[@id=\"_regular_price\"]")).sendKeys("15");	
 		Thread.sleep(2000);
+		
+		//Go to Sale price and Give value
 		driver.findElement(By.xpath("//*[@id=\"_sale_price\"]")).sendKeys("9.97");
 		Thread.sleep(2000);
+		
+		//Go to inventory and give SKU number
 		driver.findElement(By.xpath("//*[@id=\"woocommerce-product-data\"]/div[2]/div/ul/li[2]/a")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.id("_sku")).sendKeys("0001");
 		Thread.sleep(5000);
 		
+		//Find set post thumbnail and wait untill page loading
 		driver.findElement(By.id("set-post-thumbnail")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Select first image, which is camera picture
 		driver.findElement(By.xpath("//body/div[@id='__wp-uploader-id-2']/div[1]/div[1]/div[1]/div[3]/div[2]/div[1]/div[3]/ul[1]/li[1]/div[1]/div[1]")).click();
+		
+		//Click on Set product image to submit this picture for that product
 		driver.findElement(By.xpath("//button[contains(text(),'Set product image')]")).click();
 		Thread.sleep(5000);
+		
+		//Scroll up and wait
 		JavascriptExecutor jss = (JavascriptExecutor) driver;
 		jss.executeScript("window.scrollBy(0,-1000)", "");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);   
-		
-		
+		Thread.sleep(2000);
+
+
+		//Enter the Publish button to live that product to our site
 		driver.findElement(By.xpath("//*[@id=\"publish\"]")).click();
+		
+		//Finally click Finish setup on top right corner, which is complete the task and go to woocommerce dashboard
 		driver.findElement(By.xpath("//button[@id='activity-panel-tab-setup']")).click();
 
-		//---------------2 nd-------------//
+		//---------------2 nd------Repeat the same Command for all the products-------//
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath("//*[@id=\"woocommerce-layout__primary\"]/div[2]/div/div[1]/div[2]/div/div[1]/ul/li[2]/div[2]")).click();
 		driver.findElement(By.xpath("//*[@id=\"woocommerce-layout__primary\"]/div[2]/div/div/div/div[1]/div/ul/li[2]/a/div[2]")).click();
@@ -178,6 +203,8 @@ public class sample {
 		jss.executeScript("window.scrollBy(0,-1000)", "");
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[@id=\"publish\"]")).click();
+		
+		//Show All the recently added products
 		driver.findElement(By.xpath("//*[@id=\"menu-posts-product\"]/a/div[3]")).click();
 
 		
